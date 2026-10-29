@@ -1,0 +1,6 @@
+# robots.txt for Shiv Anuj Portfolio
+User-agent: *
+Allow: /
+
+# Google Search Console Sitemap
+Sitemap: https://shivvar7087.github.io/new/sitemap.xml

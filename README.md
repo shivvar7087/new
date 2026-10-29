@@ -38,6 +38,22 @@ Visitors can reach you in multiple reliable ways:
 
 ---
 
+## 🔍 Google Search Console & SEO
+
+This website includes ready-to-use search engine files:
+- **`sitemap.xml`**: XML Sitemap for Google Search Console at `https://shivvar7087.github.io/new/sitemap.xml`.
+- **`robots.txt`**: Directs search engine crawlers to the sitemap.
+- **Canonical & OpenGraph Tags**: Configured in `index.html`.
+
+### How to submit to Google Search Console:
+1. Open [Google Search Console](https://search.google.com/search-console).
+2. Click **"Add Property"** and enter your URL: `https://shivvar7087.github.io/new/`.
+3. Verify ownership (choose **HTML tag**, copy your meta tag code, and paste it into `index.html`).
+4. In the left menu, click **"Sitemaps"**.
+5. Under "Add a new sitemap", type `sitemap.xml` and click **Submit**.
+
+---
+
 ## 🚀 GitHub Pages Deployment
 
 To host this portfolio live on GitHub Pages:

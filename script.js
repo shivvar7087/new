@@ -388,17 +388,46 @@ function initContactForm() {
 
     if (!isValid) return;
 
-    // Simulate async submission
+    // Send real message to shivvar70878@gmail.com via FormSubmit
     const originalText = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.innerHTML = `<span>Sending...</span> <i class="fa-solid fa-spinner fa-spin"></i>`;
 
-    setTimeout(() => {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalText;
-      form.reset();
-      showToast('Thank you! Your message has been sent successfully.', 'success');
-    }, 1200);
+    const formData = {
+      name: nameInput.value.trim(),
+      email: emailInput.value.trim(),
+      subject: document.getElementById('subject')?.value.trim() || 'New Portfolio Message',
+      message: messageInput.value.trim(),
+      _captcha: "false",
+      _template: "table"
+    };
+
+    fetch('https://formsubmit.co/ajax/shivvar70878@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('Network error sending message');
+        return res.json();
+      })
+      .then((data) => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        form.reset();
+        showToast('Message sent! It will arrive in your email (shivvar70878@gmail.com).', 'success');
+      })
+      .catch((err) => {
+        console.error('Submission failed, falling back to mailto:', err);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        // Fallback to mailto so the user never loses the message
+        window.location.href = `mailto:shivvar70878@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent("From: " + formData.name + " (" + formData.email + ")\n\n" + formData.message)}`;
+        showToast('Opening your email client to send message...', 'success');
+      });
   });
 }
 

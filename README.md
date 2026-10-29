@@ -3,7 +3,8 @@
 A modern, high-performance, responsive portfolio website built with pure HTML5, CSS3, and JavaScript.
 
 🌐 **Live Demo / Repository**: [github.com/shivvar7087/new](https://github.com/shivvar7087/new)  
-📫 **Contact Email**: [shivvar70878@gmail.com](mailto:shivvar70878@gmail.com)
+📫 **Contact Email**: [shivvar70878@gmail.com](mailto:shivvar70878@gmail.com)  
+💬 **WhatsApp**: [+91 7318333041](https://wa.me/917318333041)
 
 ---
 

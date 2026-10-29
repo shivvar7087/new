@@ -29,11 +29,11 @@ A modern, high-performance, responsive portfolio website built with pure HTML5, 
 
 ## 📩 How the Contact Form Works
 
-When a visitor submits the form:
-1. JavaScript validates the input fields (Name, Email, Message).
-2. It sends an AJAX POST request to `https://formsubmit.co/ajax/shivvar70878@gmail.com`.
-3. **FormSubmit forwards the visitor's message directly to your inbox (`shivvar70878@gmail.com`)**.
-4. **First-time activation**: The very first time a message is sent, FormSubmit will send a single verification email to `shivvar70878@gmail.com`. Click **"Activate Form"** once, and all future messages will flow directly into your inbox without any confirmation needed.
+Visitors can reach you in multiple reliable ways:
+1. **Direct Web Gmail**: Clicking **"Open in Web Gmail"** immediately opens `mail.google.com` in their browser pre-filled with your email (`shivvar70878@gmail.com`), the subject, and the formatted message.
+2. **Email Client**: Clicking **"Send Message via Email"** opens their system email application (Outlook, Apple Mail, etc.) addressed directly to `shivvar70878@gmail.com`.
+3. **One-Click Copy**: A dedicated button next to `shivvar70878@gmail.com` lets visitors copy your email with one tap.
+4. **FormSubmit Integration**: Attempts direct background API delivery to `shivvar70878@gmail.com`. (Note: when using third-party services like FormSubmit or Formspree, ensure their service is active).
 
 ---
 

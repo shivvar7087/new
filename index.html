@@ -700,10 +700,13 @@
             <div class="contact-card-list">
               <div class="contact-info-item">
                 <div class="contact-info-icon"><i class="fa-solid fa-envelope"></i></div>
-                <div>
+                <div class="contact-info-text">
                   <span class="info-label">Email</span>
                   <a href="mailto:shivvar70878@gmail.com" class="info-value">shivvar70878@gmail.com</a>
                 </div>
+                <button type="button" class="copy-email-btn" id="copy-email-btn" title="Copy email address" aria-label="Copy email address">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
               </div>
 
               <div class="contact-info-item">
@@ -763,10 +766,19 @@
                 <span class="field-error" id="message-error"></span>
               </div>
 
-              <button type="submit" class="btn btn-primary btn-block submit-btn" id="submit-btn">
-                <span>Send Message</span>
-                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
-              </button>
+              <div class="form-actions-group">
+                <button type="submit" class="btn btn-primary btn-block submit-btn" id="submit-btn">
+                  <span>Send Message via Email</span>
+                  <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-outline btn-block gmail-btn" id="gmail-btn">
+                  <i class="fa-brands fa-google" aria-hidden="true"></i>
+                  <span>Open in Web Gmail</span>
+                </button>
+              </div>
+              <p class="form-note">
+                <i class="fa-solid fa-shield-halved"></i> Direct to <strong>shivvar70878@gmail.com</strong>. No spam, 100% confidential.
+              </p>
             </form>
           </div>
         </div>

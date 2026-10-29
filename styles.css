@@ -1218,6 +1218,68 @@ body {
   border-color: var(--accent-rose);
 }
 
+.form-actions-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .form-actions-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gmail-btn {
+  background: var(--bg-surface-elevated);
+  border-color: var(--border-prominent);
+  color: var(--text-main);
+}
+
+.gmail-btn:hover {
+  background: rgba(234, 67, 53, 0.1);
+  border-color: #ea4335;
+  color: #ea4335;
+}
+
+.form-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.contact-info-text {
+  flex: 1;
+}
+
+.copy-email-btn {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+  margin-left: auto;
+}
+
+.copy-email-btn:hover {
+  background: var(--primary-glow);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
 /* --------------------------------------------------------------------------
    Footer
    -------------------------------------------------------------------------- */

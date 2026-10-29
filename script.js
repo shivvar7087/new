@@ -332,8 +332,12 @@ function initActiveNavSpy() {
 function initContactForm() {
   const form = document.getElementById('contact-form');
   const submitBtn = document.getElementById('submit-btn');
+  const gmailBtn = document.getElementById('gmail-btn');
+  const copyEmailBtn = document.getElementById('copy-email-btn');
   const toast = document.getElementById('toast');
-  if (!form || !submitBtn || !toast) return;
+  const targetEmail = 'shivvar70878@gmail.com';
+
+  if (!form || !toast) return;
 
   function showToast(message, type = 'success') {
     toast.textContent = message;
@@ -347,12 +351,21 @@ function initContactForm() {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
+  // Handle Copy Email button
+  if (copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(targetEmail).then(() => {
+        showToast(`Copied ${targetEmail} to clipboard!`, 'success');
+      }).catch(() => {
+        showToast(`Email: ${targetEmail}`, 'success');
+      });
+    });
+  }
 
-    let isValid = true;
+  function getFormData() {
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
+    const subjectInput = document.getElementById('subject');
     const messageInput = document.getElementById('message');
 
     const nameError = document.getElementById('name-error');
@@ -363,6 +376,8 @@ function initContactForm() {
     [nameInput, emailInput, messageInput].forEach((el) => {
       el.parentElement.classList.remove('has-error');
     });
+
+    let isValid = true;
 
     if (!nameInput.value.trim()) {
       nameInput.parentElement.classList.add('has-error');
@@ -386,48 +401,70 @@ function initContactForm() {
       isValid = false;
     }
 
-    if (!isValid) return;
+    if (!isValid) return null;
 
-    // Send real message to shivvar70878@gmail.com via FormSubmit
-    const originalText = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span>Sending...</span> <i class="fa-solid fa-spinner fa-spin"></i>`;
-
-    const formData = {
+    return {
       name: nameInput.value.trim(),
       email: emailInput.value.trim(),
-      subject: document.getElementById('subject')?.value.trim() || 'New Portfolio Message',
-      message: messageInput.value.trim(),
-      _captcha: "false",
-      _template: "table"
+      subject: subjectInput?.value.trim() || 'New Portfolio Message from Shiv.dev',
+      message: messageInput.value.trim()
     };
+  }
 
-    fetch('https://formsubmit.co/ajax/shivvar70878@gmail.com', {
+  // Handle "Open in Web Gmail" button
+  if (gmailBtn) {
+    gmailBtn.addEventListener('click', () => {
+      const data = getFormData();
+      if (!data) return;
+
+      const body = `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${targetEmail}&su=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(body)}`;
+      
+      window.open(gmailUrl, '_blank');
+      showToast('Opening Web Gmail with pre-filled message...', 'success');
+    });
+  }
+
+  // Handle Form Submit (Mail Client + FormSubmit background attempt)
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const data = getFormData();
+    if (!data) return;
+
+    const originalText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<span>Opening email...</span> <i class="fa-solid fa-spinner fa-spin"></i>`;
+
+    const mailBody = `From: ${data.name} (${data.email})\n\nMessage:\n${data.message}`;
+    const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(mailBody)}`;
+
+    // Try background API forwarding if online
+    fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify(formData)
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error('Network error sending message');
-        return res.json();
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email,
+        subject: data.subject,
+        message: data.message,
+        _captcha: "false"
       })
-      .then((data) => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-        form.reset();
-        showToast('Message sent! It will arrive in your email (shivvar70878@gmail.com).', 'success');
-      })
-      .catch((err) => {
-        console.error('Submission failed, falling back to mailto:', err);
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-        // Fallback to mailto so the user never loses the message
-        window.location.href = `mailto:shivvar70878@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent("From: " + formData.name + " (" + formData.email + ")\n\n" + formData.message)}`;
-        showToast('Opening your email client to send message...', 'success');
-      });
+    }).catch(() => {
+      /* FormSubmit server outage handled silently */
+    });
+
+    // Launch direct mailto
+    setTimeout(() => {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+      window.location.href = mailtoUrl;
+      showToast('Opening your email app to send to shivvar70878@gmail.com!', 'success');
+      form.reset();
+    }, 600);
   });
 }
 

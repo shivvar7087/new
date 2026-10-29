@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shiv Anuj | Full-Stack & Machine Learning Developer</title>
+  <meta name="description" content="Portfolio of Shiv Anuj - Full-Stack Developer & Machine Learning Engineer specializing in React, FastAPI, Python, and intelligent cloud systems.">
+  <meta name="keywords" content="Shiv Anuj, Full Stack Developer, Machine Learning, Python, FastAPI, React, Portfolio">
+  <meta name="author" content="Shiv Anuj">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Shiv Anuj | Full-Stack & ML Developer Portfolio">
+  <meta property="og:description" content="Explore projects in intelligent AI assistants, financial calendars, ML prediction models, and full-stack web applications.">
+  <meta property="og:url" content="https://shivvar7087.github.io/portfolio">
+  
+  <!-- Modern Color Scheme -->
+  <meta name="color-scheme" content="light dark">
+  <script>
+    // Inline script for instant theme application to prevent FOUC
+    try {
+      const storedScheme = localStorage.getItem("color-scheme");
+      if (storedScheme) {
+        document.querySelector('meta[name="color-scheme"]').content = storedScheme;
+      }
+    } catch (e) {
+      /* ignore storage errors */
+    }
+  </script>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Background Canvas for Interactive Particles -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Header / Navigation -->
+  <header class="site-header" id="header">
+    <div class="nav-container">
+      <a href="#hero" class="logo" aria-label="Shiv Anuj Home">
+        <span class="logo-code">&lt;</span><span class="logo-name">Shiv.dev</span><span class="logo-code">/&gt;</span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="icon-btn theme-toggle" aria-label="Toggle color theme" title="Toggle color scheme">
+          <i class="fa-solid fa-moon dark-icon" aria-hidden="true"></i>
+          <i class="fa-solid fa-sun light-icon" aria-hidden="true"></i>
+        </button>
+
+        <a href="#contact" class="btn btn-sm btn-primary contact-cta">Hire Me</a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+          <i class="fa-solid fa-bars menu-icon" aria-hidden="true"></i>
+          <i class="fa-solid fa-xmark close-icon" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="status-indicator"></span>
+            <span>Available for new opportunities</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text">Shiv Anuj</span>
+          </h1>
+
+          <div class="hero-subtitle-wrapper">
+            <span class="hero-subtitle-prefix">I am a </span>
+            <span class="hero-typed-text" id="typed-text"></span>
+            <span class="typing-cursor">|</span>
+          </div>
+
+          <p class="hero-description">
+            Passionate software engineer and machine learning practitioner building resilient full-stack applications, intelligent AI workflows, and high-performance APIs.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary">
+              <span>Explore My Work</span>
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="https://github.com/shivvar7087" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+              <span>GitHub Profile</span>
+            </a>
+          </div>
+
+          <div class="hero-socials">
+            <span class="socials-label">Connect:</span>
+            <a href="https://github.com/shivvar7087" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="social-icon">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+            </a>
+            <a href="mailto:shivvar70878@gmail.com" aria-label="Email Shiv Anuj" class="social-icon">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="social-icon">
+              <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="code-terminal-card">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="terminal-title">developer_profile.py</span>
+              <span class="terminal-badge">Python 3.12</span>
+            </div>
+            <pre class="terminal-body"><code><span class="token-keyword">class</span> <span class="token-class">SoftwareEngineer</span>:
+    <span class="token-keyword">def</span> <span class="token-function">__init__</span>(<span class="token-param">self</span>):
+        <span class="token-param">self</span>.name = <span class="token-string">"Shiv Anuj"</span>
+        <span class="token-param">self</span>.role = <span class="token-string">"Full-Stack & ML Dev"</span>
+        <span class="token-param">self</span>.skills = [
+            <span class="token-string">"Python"</span>, <span class="token-string">"FastAPI"</span>, 
+            <span class="token-string">"React"</span>, <span class="token-string">"PyTorch"</span>, 
+            <span class="token-string">"PostgreSQL"</span>, <span class="token-string">"Docker"</span>
+        ]
+        <span class="token-param">self</span>.passions = [
+            <span class="token-string">"AI Engineering"</span>,
+            <span class="token-string">"Scalable APIs"</span>,
+            <span class="token-string">"Clean Architecture"</span>
+        ]
+
+    <span class="token-keyword">def</span> <span class="token-function">build_future</span>(<span class="token-param">self</span>):
+        <span class="token-keyword">return</span> <span class="token-string">"Turning ideas into production code 🚀"</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number" data-count="15">0+</div>
+            <div class="stat-label">Projects Built</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="10">0+</div>
+            <div class="stat-label">Core Technologies</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="500">0+</div>
+            <div class="stat-label">Git Commits</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="99">0%</div>
+            <div class="stat-label">Client Satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">About Me</span>
+          <h2 class="section-title">Driven by Curiosity, Engineered with Precision</h2>
+          <p class="section-subtitle">Bridging the gap between cutting-edge Machine Learning research and production-grade web systems.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-image-wrapper">
+            <div class="about-card-glow"></div>
+            <div class="about-card-inner">
+              <div class="about-avatar">
+                <i class="fa-solid fa-user-astronaut"></i>
+              </div>
+              <div class="about-card-meta">
+                <h3>Shiv Anuj</h3>
+                <p>Software Engineer & Researcher</p>
+                <div class="about-quick-tags">
+                  <span><i class="fa-solid fa-location-dot"></i> India</span>
+                  <span><i class="fa-solid fa-bolt"></i> Fast Learner</span>
+                  <span><i class="fa-solid fa-code-branch"></i> Open Source</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-text-content">
+            <h3>Crafting resilient software with elegant user experiences</h3>
+            <p>
+              I am a developer who loves solving real-world problems through clean code, modular architecture, and modern engineering practices. My journey spans building intuitive user interfaces in React to orchestrating backend APIs with FastAPI, as well as developing predictive Machine Learning pipelines.
+            </p>
+            <p>
+              Whether it's designing a resource assistant powered by state-of-the-art LLMs like Gemma, creating real-time financial tracking tools, or deploying data science models for price predictions, I obsess over performance, developer ergonomics, and user satisfaction.
+            </p>
+
+            <div class="about-features-grid">
+              <div class="about-feature">
+                <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
+                <div>
+                  <h4>Full-Stack Mastery</h4>
+                  <p>Seamless synergy between reactive frontends and high-concurrency backend services.</p>
+                </div>
+              </div>
+
+              <div class="about-feature">
+                <div class="feature-icon"><i class="fa-solid fa-brain"></i></div>
+                <div>
+                  <h4>AI & Machine Learning</h4>
+                  <p>Practical integration of predictive models, LLM agents, and data engineering pipelines.</p>
+                </div>
+              </div>
+
+              <div class="about-feature">
+                <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                  <h4>Clean Code & Security</h4>
+                  <p>Adhering to strict standards, type safety, test-driven logic, and modern web best practices.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Capabilities</span>
+          <h2 class="section-title">Skills & Tech Stack</h2>
+          <p class="section-subtitle">A curated toolkit engineered for speed, scalability, and modern standards.</p>
+        </div>
+
+        <!-- Skills Filter Tabs -->
+        <div class="filter-tabs" role="tablist" aria-label="Skill Categories">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All Skills</button>
+          <button class="filter-tab" data-filter="frontend" role="tab" aria-selected="false">Frontend</button>
+          <button class="filter-tab" data-filter="backend" role="tab" aria-selected="false">Backend & DB</button>
+          <button class="filter-tab" data-filter="ai-ml" role="tab" aria-selected="false">AI / Machine Learning</button>
+          <button class="filter-tab" data-filter="devops" role="tab" aria-selected="false">DevOps & Tools</button>
+        </div>
+
+        <div class="skills-grid" id="skills-grid">
+          <!-- Frontend -->
+          <div class="skill-card" data-category="frontend">
+            <div class="skill-icon-wrap" style="--accent-color: #61DAFB;">
+              <i class="fa-brands fa-react"></i>
+            </div>
+            <div class="skill-info">
+              <span class="skill-name">React.js</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+          </div>
+
+          <div class="skill-card" data-category="frontend">
+            <div class="skill-icon-wrap" style="--accent-color: #F7DF1E;">
+              <i class="fa-brands fa-js"></i>
+            </div>
+            <div class="skill-info">
+              <span class="skill-name">JavaScript (ES6+)</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 92%;"></div></div>
+          </div>
+
+          <div class="skill-card" data-category="frontend">
+            <div class="skill-icon-wrap" style="--accent-color: #38BDF8;">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <div class="skill-info">
+              <span class="skill-name">HTML5 / Modern CSS</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+          </div>
+
+          <div class="skill-card" data-category="frontend">
+            <div class="skill-icon-wrap" style="--accent-color: #BD34FE;">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="skill-info">
+              <span class="skill-name">Vite / Webpack</span>
+              <span class="skill-level">Proficient</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+          </div>
+
+          <!-- Backend -->
+          <div class="skill-card" data-category="backend">
+            <div class="skill-icon-wrap" style="--accent-color: #3776AB;">
+              <i class="fa-brands fa-python"></i>
+            </div>
+            <div class="skill-info">
+              <span class="skill-name">Python</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+          </div>
+
+          <div class="skill-card" data-category="backend">
+            <div class="skill-icon-wrap" style="--accent-color: #059669;">
+              <i class="fa-solid fa-server"></i>
+            </div>
+            <div class="skill-info">
+              <span class="skill-name">FastAPI / Flask</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+          </div>
+
+          <div class="skill-card" data-category="backend">
+            <div class="skill-icon-wrap" style="--accent-color: #336791;">
+              <i class="fa-solid fa-database"></i>
+            </div>
+            <div class="skill-info">
+              <span class="skill-name">PostgreSQL / SQLite</span>
+              <span class="skill-level">Proficient</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 84%;"></div></div>
+          </div>
+
+          <div class="skill-card" data-category="backend">
+            <div class="skill-icon-wrap" style="--accent-color: #68A063;">
+              <i class="fa-brands fa-node-js"></i>
+            </div>
+            <div class="skill-info">
+              <span class="skill-name">Node.js / Express</span>
+              <span class="skill-level">Proficient</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+          </div>
+
+          <!-- AI / ML -->
+          <div class="skill-card" data-category="ai-ml">
+            <div class="skill-icon-wrap" style="--accent-color: #EE4C2C;">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <div class="skill-info">
+              <span class="skill-name">Machine Learning / Scikit-Learn</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+          </div>
+
+          <div class="skill-card" data-category="ai-ml">
+            <div class="skill-icon-wrap" style="--accent-color: #150458;">
+              <i class="fa-solid fa-table"></i>
+            </div>
+            <div class="skill-info">
+              <span class="skill-name">Pandas & NumPy</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 92%;"></div></div>
+          </div>
+
+          <div class="skill-card" data-category="ai-ml">
+            <div class="skill-icon-wrap" style="--accent-color: #8B5CF6;">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <div class="skill-info">
+              <span class="skill-name">LLM Integration (Gemma / Gemini)</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 86%;"></div></div>
+          </div>
+
+          <!-- DevOps & Tools -->
+          <div class="skill-card" data-category="devops">
+            <div class="skill-icon-wrap" style="--accent-color: #F05032;">
+              <i class="fa-brands fa-git-alt"></i>
+            </div>
+            <div class="skill-info">
+              <span class="skill-name">Git & GitHub Actions</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+          </div>
+
+          <div class="skill-card" data-category="devops">
+            <div class="skill-icon-wrap" style="--accent-color: #2496ED;">
+              <i class="fa-brands fa-docker"></i>
+            </div>
+            <div class="skill-info">
+              <span class="skill-name">Docker & Containers</span>
+              <span class="skill-level">Proficient</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 78%;"></div></div>
+          </div>
+
+          <div class="skill-card" data-category="devops">
+            <div class="skill-icon-wrap" style="--accent-color: #4A154B;">
+              <i class="fa-solid fa-terminal"></i>
+            </div>
+            <div class="skill-info">
+              <span class="skill-name">Linux / PowerShell</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Portfolio</span>
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-subtitle">Real-world applications crafted with attention to architecture, scalability, and UX.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: NovaTech -->
+          <article class="project-card">
+            <div class="project-card-header">
+              <div class="project-folder-icon">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/shivvar7087/NovaTech" target="_blank" rel="noopener noreferrer" aria-label="NovaTech GitHub repository" class="project-icon-link">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-badges">
+                <span class="badge featured">Featured</span>
+                <span class="badge">AI / LLM</span>
+              </div>
+              <h3 class="project-title">NovaTech</h3>
+              <p class="project-desc">
+                Campus Resource Intelligence Assistant powered by Google's Gemma LLM, React frontend, Vite, and high-performance FastAPI backend. Features conversational contextual querying over campus databases.
+              </p>
+              <ul class="project-tech-list">
+                <li>React</li>
+                <li>FastAPI</li>
+                <li>Pandas</li>
+                <li>Gemma 4</li>
+                <li>Vite</li>
+              </ul>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/shivvar7087/NovaTech" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <span>View Source</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2: TradeCal -->
+          <article class="project-card">
+            <div class="project-card-header">
+              <div class="project-folder-icon">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/shivvar7087/TradeCal" target="_blank" rel="noopener noreferrer" aria-label="TradeCal GitHub repository" class="project-icon-link">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-badges">
+                <span class="badge">FinTech</span>
+                <span class="badge">Full-Stack</span>
+              </div>
+              <h3 class="project-title">TradeCal</h3>
+              <p class="project-desc">
+                Stock Market Trading Calendar & P/L Tracker web application. Allows active market traders to visualize daily profit/loss, calculate risk-reward ratios, and journal trades with SQLite database persistence.
+              </p>
+              <ul class="project-tech-list">
+                <li>React</li>
+                <li>Vite</li>
+                <li>FastAPI</li>
+                <li>SQLite</li>
+                <li>Chart.js</li>
+              </ul>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/shivvar7087/TradeCal" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <span>View Source</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3: Airline Ticket Price Prediction -->
+          <article class="project-card">
+            <div class="project-card-header">
+              <div class="project-folder-icon">
+                <i class="fa-solid fa-plane-departure"></i>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/shivvar7087/Airline-Ticket-Price-Prediction-using-Machine-Learning" target="_blank" rel="noopener noreferrer" aria-label="Airline Ticket Price Prediction repository" class="project-icon-link">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-badges">
+                <span class="badge">Machine Learning</span>
+                <span class="badge">Predictive Analytics</span>
+              </div>
+              <h3 class="project-title">Airline Ticket Price Prediction</h3>
+              <p class="project-desc">
+                End-to-end full-stack web application integrating an ML regression model trained on historical flight data. Evaluates routes, airlines, duration, and seasonality to predict optimal booking prices.
+              </p>
+              <ul class="project-tech-list">
+                <li>Python</li>
+                <li>Scikit-Learn</li>
+                <li>Flask / FastAPI</li>
+                <li>Pandas</li>
+                <li>HTML5/CSS</li>
+              </ul>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/shivvar7087/Airline-Ticket-Price-Prediction-using-Machine-Learning" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <span>View Source</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 4: Retail Store Optimization -->
+          <article class="project-card">
+            <div class="project-card-header">
+              <div class="project-folder-icon">
+                <i class="fa-solid fa-store"></i>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/shivvar7087/Retail-Store-Optimization" target="_blank" rel="noopener noreferrer" aria-label="Retail Store Optimization repository" class="project-icon-link">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-badges">
+                <span class="badge">Data Science</span>
+                <span class="badge">Optimization</span>
+              </div>
+              <h3 class="project-title">Retail Store Optimization</h3>
+              <p class="project-desc">
+                Data-driven analytics system analyzing customer footfall, inventory turnover, and product placement dynamics to maximize retail revenue and reduce stockout probability.
+              </p>
+              <ul class="project-tech-list">
+                <li>Python</li>
+                <li>Data Analytics</li>
+                <li>Algorithms</li>
+                <li>Matplotlib</li>
+              </ul>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/shivvar7087/Retail-Store-Optimization" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <span>View Source</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 5: LandPredict -->
+          <article class="project-card">
+            <div class="project-card-header">
+              <div class="project-folder-icon">
+                <i class="fa-solid fa-map-location-dot"></i>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/shivvar7087/LandPredict" target="_blank" rel="noopener noreferrer" aria-label="LandPredict repository" class="project-icon-link">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-badges">
+                <span class="badge">Real Estate AI</span>
+                <span class="badge">Regression</span>
+              </div>
+              <h3 class="project-title">LandPredict</h3>
+              <p class="project-desc">
+                Intelligent real-estate valuation engine that estimates land and property prices based on geospatial markers, surrounding infrastructure, municipal metrics, and historical appreciation rates.
+              </p>
+              <ul class="project-tech-list">
+                <li>Python</li>
+                <li>Machine Learning</li>
+                <li>NumPy</li>
+                <li>REST API</li>
+              </ul>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/shivvar7087/LandPredict" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <span>View Source</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience & Timeline Section -->
+    <section class="section experience-section" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Roadmap</span>
+          <h2 class="section-title">Experience & Milestones</h2>
+          <p class="section-subtitle">My progression as an engineer building software systems.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2024 - Present</div>
+              <h3 class="timeline-role">Full-Stack & AI Systems Developer</h3>
+              <h4 class="timeline-company">Independent Engineering & Open Source</h4>
+              <p>
+                Architected and deployed full-stack web applications integrating modern LLM models (Gemma, Gemini) and production APIs using FastAPI and React. Implemented automated CI/CD pipelines and optimized data workflows.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2023 - 2024</div>
+              <h3 class="timeline-role">Machine Learning & Data Analyst Project Lead</h3>
+              <h4 class="timeline-company">Predictive Analytics Projects</h4>
+              <p>
+                Trained and evaluated high-accuracy regression models on large tabular datasets, conducting feature engineering, hyperparameter tuning, and containerized deployment for real-time predictions.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">Academic Foundation</div>
+              <h3 class="timeline-role">Computer Science & Engineering</h3>
+              <h4 class="timeline-company">Undergraduate Studies</h4>
+              <p>
+                Core foundations in Data Structures, Algorithms, Database Management Systems, Operating Systems, Software Engineering Principles, and Artificial Intelligence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Get in Touch</span>
+          <h2 class="section-title">Let's Build Something Exceptional</h2>
+          <p class="section-subtitle">Have an exciting idea, a project collaboration, or a question? My inbox is always open.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info-panel">
+            <h3>Contact Information</h3>
+            <p>Feel free to reach out directly via email or connect with me across professional networks.</p>
+
+            <div class="contact-card-list">
+              <div class="contact-info-item">
+                <div class="contact-info-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div>
+                  <span class="info-label">Email</span>
+                  <a href="mailto:shivvar70878@gmail.com" class="info-value">shivvar70878@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="contact-info-item">
+                <div class="contact-info-icon"><i class="fa-brands fa-github"></i></div>
+                <div>
+                  <span class="info-label">GitHub</span>
+                  <a href="https://github.com/shivvar7087" target="_blank" rel="noopener noreferrer" class="info-value">github.com/shivvar7087</a>
+                </div>
+              </div>
+
+              <div class="contact-info-item">
+                <div class="contact-info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div>
+                  <span class="info-label">Location</span>
+                  <span class="info-value">India (Open to Remote Globally)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-status-card">
+              <div class="status-pulse"></div>
+              <div>
+                <strong>Current Status:</strong>
+                <p>Accepting new freelance contracts, full-time engineering roles, and open-source collaborations.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-panel">
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Your Name <span class="required">*</span></label>
+                  <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Alex Morgan" required autocomplete="name">
+                  <span class="field-error" id="name-error"></span>
+                </div>
+                <div class="form-group">
+                  <label for="email">Your Email <span class="required">*</span></label>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="e.g. alex@example.com" required autocomplete="email">
+                  <span class="field-error" id="email-error"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" class="form-input" placeholder="e.g. Project Collaboration / Opportunity">
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message <span class="required">*</span></label>
+                <textarea id="message" name="message" class="form-textarea" rows="5" placeholder="Tell me about your project, goals, or questions..." required></textarea>
+                <span class="field-error" id="message-error"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block submit-btn" id="submit-btn">
+                <span>Send Message</span>
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <a href="#hero" class="logo">
+          <span class="logo-code">&lt;</span><span class="logo-name">Shiv.dev</span><span class="logo-code">/&gt;</span>
+        </a>
+        <p>Crafted with clean code, modern web standards, and high performance.</p>
+      </div>
+
+      <div class="footer-center">
+        <p>&copy; <span id="current-year">2026</span> Shiv Anuj. All rights reserved.</p>
+      </div>
+
+      <div class="footer-right">
+        <a href="https://github.com/shivvar7087" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="mailto:shivvar70878@gmail.com" aria-label="Email" class="social-icon">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+        <a href="#hero" class="back-to-top" id="back-to-top" aria-label="Back to top">
+          <i class="fa-solid fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

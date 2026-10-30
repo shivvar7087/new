@@ -21,9 +21,8 @@ A modern, high-performance, responsive portfolio website built with pure HTML5, 
   - **Retail Store Optimization**: Data-driven retail analytics and inventory dynamics
   - **LandPredict**: Real-estate valuation engine using regression models
 - **📬 Working Contact Form**:
-  - Connected directly to [FormSubmit](https://formsubmit.co) with AJAX submission.
-  - Automatically delivers messages straight to `shivvar70878@gmail.com`.
-  - Fallback to `mailto:` in case of network disruptions.
+  - Sends through [FormSubmit](https://formsubmit.co) and reports whether the service accepted the message.
+  - Keeps the message in the form and offers the Gmail/email links if the service is unavailable.
 - **📱 Fully Responsive**: Fluid layouts across desktop, tablet, and mobile screens.
 
 ---
@@ -32,9 +31,11 @@ A modern, high-performance, responsive portfolio website built with pure HTML5, 
 
 Visitors can reach you in multiple reliable ways:
 1. **Direct Web Gmail**: Clicking **"Open in Web Gmail"** immediately opens `mail.google.com` in their browser pre-filled with your email (`shivvar70878@gmail.com`), the subject, and the formatted message.
-2. **Email Client**: Clicking **"Send Message via Email"** opens their system email application (Outlook, Apple Mail, etc.) addressed directly to `shivvar70878@gmail.com`.
+2. **Email Client**: Clicking the email address in the contact information opens the visitor's configured email application addressed to `shivvar70878@gmail.com`.
 3. **One-Click Copy**: A dedicated button next to `shivvar70878@gmail.com` lets visitors copy your email with one tap.
-4. **FormSubmit Integration**: Attempts direct background API delivery to `shivvar70878@gmail.com`. (Note: when using third-party services like FormSubmit or Formspree, ensure their service is active).
+4. **Contact Form**: Submits through FormSubmit and shows success only after the service accepts it. The first submission requires confirming the activation email FormSubmit sends to `shivvar70878@gmail.com`.
+
+If form delivery fails, check that the FormSubmit activation email was confirmed and that the visitor's browser can reach FormSubmit. The form will keep its contents so they can retry or use one of the direct email options.
 
 ---
 

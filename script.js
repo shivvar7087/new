@@ -425,46 +425,67 @@ function initContactForm() {
     });
   }
 
-  // Handle Form Submit (Mail Client + FormSubmit background attempt)
-  form.addEventListener('submit', (e) => {
+  // Send through FormSubmit and report the actual result. Do not launch mailto
+  // at the same time: leaving the page can interrupt the background request.
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const data = getFormData();
     if (!data) return;
 
-    const originalText = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span>Opening email...</span> <i class="fa-solid fa-spinner fa-spin"></i>`;
+    const originalText = submitBtn?.innerHTML;
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Sending message...</span> <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>';
+    }
 
-    const mailBody = `From: ${data.name} (${data.email})\n\nMessage:\n${data.message}`;
-    const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(mailBody)}`;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
 
-    // Try background API forwarding if online
-    fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        name: data.name,
-        email: data.email,
-        subject: data.subject,
-        message: data.message,
-        _captcha: "false"
-      })
-    }).catch(() => {
-      /* FormSubmit server outage handled silently */
-    });
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        signal: controller.signal,
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          _replyto: data.email,
+          subject: data.subject,
+          message: data.message,
+          _captcha: 'false',
+          _template: 'table'
+        })
+      });
 
-    // Launch direct mailto
-    setTimeout(() => {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalText;
-      window.location.href = mailtoUrl;
-      showToast('Opening your email app to send to shivvar70878@gmail.com!', 'success');
+      let result;
+      try {
+        result = await response.json();
+      } catch {
+        throw new Error('The mail service returned an unreadable response.');
+      }
+
+      if (!response.ok || (result.success !== true && result.success !== 'true')) {
+        throw new Error(result.message || 'The mail service could not accept your message.');
+      }
+
       form.reset();
-    }, 600);
+      showToast('Your message was submitted successfully. Thank you for reaching out!', 'success');
+    } catch (error) {
+      const reason = error.name === 'AbortError'
+        ? 'The request timed out.'
+        : 'The message could not be sent right now.';
+      showToast(`${reason} Please try Open in Web Gmail or use the email link below. Your message is still here.`, 'error');
+    } finally {
+      clearTimeout(timeoutId);
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    }
   });
 }
 
